@@ -1,0 +1,25 @@
+-- Salvage output by rarity and profile, plus 50% refund of invested scrap, dust and ingots.
+return function(T)
+    local L = T.L
+    local function y(profile, rarity, spent)
+        return (L.SalvageYield({ profile = profile, rarity = rarity, spent = spent or {} }))
+    end
+    T.eq(y("weapon", 1), { scrap = 2 })
+    T.eq(y("body", 2), { scrap = 2, dust = 1 })
+    T.eq(y("weapon", 3), { scrap = 3, dust = 2 })
+    T.eq(y("shield", 4), { scrap = 4, dust = 3 })
+    T.eq(y("focus", 5), { scrap = 5, dust = 4, ingot = 1 })
+    T.eq(y("cloak", 1), { scrap = 1 }, "cloak scrap x0.5")
+    T.eq(y("cloak", 3), { scrap = 1, dust = 2 })
+    T.eq(y("cloak", 4), { scrap = 2, dust = 3 })
+    T.eq(y("cloak", 5), { scrap = 2, dust = 4, ingot = 1 })
+    T.eq(y("ring", 1), { dust = 1 }, "jewellery: no scrap, +1 dust")
+    T.eq(y("amulet", 2), { dust = 2 })
+    T.eq(y("ring", 5), { dust = 5, ingot = 1 })
+    T.eq(y("weapon", 1, { scrap = 9, gold = 220 }), { scrap = 6 }, "guide example: common sword +5")
+    T.eq(y("weapon", 2, { scrap = 27, dust = 8, core = 1, gold = 1118 }), { scrap = 15, dust = 5 }, "cores and gold are not returned")
+    local _, refunded = L.SalvageYield({ profile = "weapon", rarity = 1, spent = { scrap = 9 } })
+    T.eq(refunded, true)
+    local _, none = L.SalvageYield({ profile = "weapon", rarity = 1, spent = {} })
+    T.eq(none, false)
+end

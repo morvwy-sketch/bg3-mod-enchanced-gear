@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>LsTool</AssemblyName>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <NoWarn>$(NoWarn);CS1998</NoWarn>
+  </PropertyGroup>
+
+  <!-- LSLib's LS layer (LSX/LSF/Loca/PAK) is compiled from the pinned checkout that build.sh clones into tools/.cache/lslib.
+       Granny (GR2) needs the Windows-only LSLibNative C++/CLI project, and Story needs GPPG-generated parsers, and Mods, Save and VFS depend on Story, so none of them are compiled. -->
+  <PropertyGroup>
+    <LSLibRoot Condition="'$(LSLibRoot)' == ''">$(MSBuildThisFileDirectory)../.cache/lslib/</LSLibRoot>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="$(LSLibRoot)LSLib/LS/**/*.cs" Exclude="$(LSLibRoot)LSLib/LS/Story/**/*.cs;$(LSLibRoot)LSLib/LS/Mods/**/*.cs;$(LSLibRoot)LSLib/LS/Save/**/*.cs;$(LSLibRoot)LSLib/LS/VFS.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="K4os.Compression.LZ4" Version="1.3.8" />
+    <PackageReference Include="K4os.Compression.LZ4.Streams" Version="1.3.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="OpenTK.Mathematics" Version="4.9.3" />
+    <PackageReference Include="SharpGLTF.Core" Version="1.0.3" />
+    <PackageReference Include="SharpGLTF.Toolkit" Version="1.0.3" />
+    <PackageReference Include="System.IO.Hashing" Version="9.0.2" />
+    <PackageReference Include="ZstdSharp.Port" Version="0.8.5" />
+  </ItemGroup>
+
+</Project>

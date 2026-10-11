@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<save>
+    <version major="4" minor="0" revision="9" build="331" />
+    <region id="Templates">
+        <node id="Templates">
+            <children>
+                <node id="GameObjects">
+                    <attribute id="MapKey" type="FixedString" value="4a91d3e7-62bc-4f08-8d2a-b5e17c90f3a4" />
+                    <attribute id="Name" type="LSString" value="EG_OBJ_Scrap" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="5b386575-5836-40cd-8548-e5c27fd105a1" />
+                    <attribute id="Stats" type="FixedString" value="EG_OBJ_Scrap" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h1188a47bg88ddg310fgc18egc687b100b99d" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h5e441c69g25acg4709ge4ceg3ed965a43587" version="1" />
+                    <attribute id="Icon" type="FixedString" value="EG_Item_Scrap" />
+                    <attribute id="maxStackAmount" type="int32" value="999" />
+                </node>
+                <node id="GameObjects">
+                    <attribute id="MapKey" type="FixedString" value="d8f04b2c-9e15-4a7d-b36f-21c8e5a7d9b0" />
+                    <attribute id="Name" type="LSString" value="EG_OBJ_Dust" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="fef1900a-402c-455f-8c63-87bdaedac6d7" />
+                    <attribute id="Stats" type="FixedString" value="EG_OBJ_Dust" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h7c893886gecb4gee7fgb182g37581d30720b" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h52ca1840gc3dag088dgd63eg4112fd27b49d" version="1" />
+                    <attribute id="Icon" type="FixedString" value="EG_Item_Dust" />
+                    <attribute id="maxStackAmount" type="int32" value="999" />
+                </node>
+                <node id="GameObjects">
+                    <attribute id="MapKey" type="FixedString" value="1e6b8a3f-c42d-4590-a8e1-7f3d0b9c2e65" />
+                    <attribute id="Name" type="LSString" value="EG_OBJ_Ingot" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="e0803337-e2b1-4528-8d4f-b5814e9a52ec" />
+                    <attribute id="Stats" type="FixedString" value="EG_OBJ_Ingot" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h6abe0e3bg87d6g8d71gdac8g55bbb4694ef3" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h1b6e6429g12f5g3407g385dg1785af5fa1e9" version="1" />
+                    <attribute id="Icon" type="FixedString" value="EG_Item_Ingot" />
+                    <attribute id="maxStackAmount" type="int32" value="999" />
+                </node>
+                <node id="GameObjects">
+                    <attribute id="MapKey" type="FixedString" value="b3c7e129-58fa-4e2b-9d04-6a1f8e3c7b52" />
+                    <attribute id="Name" type="LSString" value="EG_OBJ_Core" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="82d4f21d-11c8-47dd-a69f-dcfb3103ff76" />
+                    <attribute id="Stats" type="FixedString" value="EG_OBJ_Core" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="h8c282ef1g2e5cga030g850bg873f3c916dc8" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="ha0dd2c6bg3ed8g7ab2g23efgdb114258905e" version="1" />
+                    <attribute id="Icon" type="FixedString" value="EG_Item_Core" />
+                    <attribute id="maxStackAmount" type="int32" value="999" />
+                </node>
+                <node id="GameObjects">
+                    <attribute id="MapKey" type="FixedString" value="9f5a2d81-e7c3-4b16-a59e-3d8b0f4c61e7" />
+                    <attribute id="Name" type="LSString" value="EG_OBJ_ForgeKit" />
+                    <attribute id="LevelName" type="FixedString" value="" />
+                    <attribute id="Type" type="FixedString" value="item" />
+                    <attribute id="ParentTemplateId" type="FixedString" value="c2a14b56-9dca-4ad1-bcea-71204365f6a9" />
+                    <attribute id="Stats" type="FixedString" value="EG_OBJ_ForgeKit" />
+                    <attribute id="DisplayName" type="TranslatedString" handle="he49f26b2gab4bg2294gc9c8g995aa8ca6062" version="1" />
+                    <attribute id="Description" type="TranslatedString" handle="h9ac90434ge248g13e2g21e2gbf5099ce68a0" version="1" />
+                    <attribute id="Icon" type="FixedString" value="EG_Item_ForgeKit" />
+                    <children>
+                        <node id="OnUsePeaceActions">
+                            <children>
+                                <node id="Action">
+                                    <attribute id="ActionType" type="int32" value="7" />
+                                    <children>
+                                        <node id="Attributes">
+                                            <attribute id="Animation" type="FixedString" value="" />
+                                            <attribute id="Conditions" type="LSString" value="" />
+                                            <attribute id="Consume" type="bool" value="False" />
+                                            <attribute id="IsHiddenStatus" type="bool" value="True" />
+                                            <attribute id="StatsId" type="FixedString" value="EG_FORGE_OPEN" />
+                                            <attribute id="StatusDuration" type="int32" value="1" />
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

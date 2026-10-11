@@ -1,0 +1,52 @@
+-- Salvage: two clicks in the window, protected items, journal of the deleting stage.
+return function(T)
+    local h = T.New()
+    h:Rich()
+    local sword = h:Item(h.host, "longsword")
+    h:Upgrade(sword, 5)
+    h:Equip(h.host, "MAIN", sword)
+    T.eq(h:Req("salvage", { item = sword }).reason, "equipped")
+    h:Unequip(h.host, "MAIN")
+    local scrap = h:Count(h.host, "scrap")
+
+    h:Key("F7")
+    h:Click("Longsword +5", "selectable")
+    h:Press(h:Exact("button", "Salvage", 1)) -- action tab
+    T.has(h:Texts(), "You will receive:")
+    T.has(h:Texts(), "Scrap Metal: 6")
+    T.has(h:Texts(), "(including a refund of invested materials)")
+    T.has(h:Texts(), "The item will be destroyed.")
+    h:Press(h:Exact("button", "Salvage", 2))
+    h:Press(h:Exact("button", "Cancel"))
+    T.ok(h.w:E(sword), "cancel keeps the item")
+    h:Press(h:Exact("button", "Salvage", 2))
+    h:Press(h:Exact("button", "Confirm salvage"))
+    T.ok(not h.w:E(sword), "item destroyed")
+    T.eq(h:Count(h.host, "scrap"), scrap + 6, "output granted")
+    T.eq(h:Data().index[sword], nil, "removed from the index")
+    T.has(h:Texts(), "Longsword salvaged: 6 scrap.")
+
+    local story = h:Item(h.host, "longsword", { story = true })
+    T.eq(h:Req("salvage", { item = story }).reason, "story")
+    local foreign = h:Item(h.host, "foreign")
+    T.eq(h:Req("salvage", { item = foreign }).reason, "foreign")
+    local h2 = T.New({ config = { AllowForeignModItems = true } })
+    T.ok(h2:Req("salvage", { item = h2:Item(h2.host, "foreign") }).ok, "allowed by the setting")
+
+    h.S.Data.Update(function(d)
+        d.journal = { op = "salvage", stage = "deleting", item = "ee000000-0000-4000-8000-000000000001",
+            actor = h.host, output = { dust = 3 } }
+    end)
+    local dust = h:Count(h.host, "dust")
+    h:Reload()
+    T.eq(h:Count(h.host, "dust"), dust + 3, "item gone: output delivered")
+    local dagger = h:Item(h.host, "dagger")
+    h.S.Data.Update(function(d)
+        d.journal = { op = "salvage", stage = "deleting", item = dagger, actor = h.host, output = { dust = 3 } }
+    end)
+    h:Reload()
+    T.eq(h:Count(h.host, "dust"), dust + 3, "item still there: cancelled")
+    T.ok(h.w:E(dagger), "item kept")
+    h:Clean()
+    h2:Clean()
+end
