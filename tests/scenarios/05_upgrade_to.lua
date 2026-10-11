@@ -1,0 +1,26 @@
+-- "Upgrade to +N": up to the next milestone; paid steps stay when resources run out.
+return function(T)
+    local h = T.New()
+    h:Tech(4)
+    local sword = h:Item(h.host, "longsword")
+    h:Give(h.host, { scrap = 20, gold = 1000 })
+    local r = h:Req("upgradeTo", { item = sword, target = 20 })
+    T.ok(r.ok, "upgrade to")
+    T.eq(h:State(sword).level, 5, "stops at the next milestone / ceiling")
+    T.eq(r.msg.key, "ui.res.upgrade")
+
+    local h2 = T.New()
+    local mail = h2:Item(h2.host, "chainmail")
+    h2:Give(h2.host, { gold = 50 }) -- +1 (20) and +2 (30) are affordable, +3 (40) is not
+    local r2 = h2:Req("upgradeTo", { item = mail, target = 5 })
+    T.ok(r2.ok, "partial upgrade is still a success")
+    T.eq(r2.msg.key, "ui.res.upgradePartial")
+    T.eq(h2:State(mail).level, 2, "two paid steps")
+    T.eq(h2:Count(h2.host, "gold"), 0)
+    local before = h2:Bundle()
+    local r3 = h2:Req("upgradeTo", { item = mail, target = 5 })
+    T.eq(r3.reason, "resources", "nothing affordable")
+    T.eq(h2:Bundle(), before, "nothing spent")
+    h:Clean()
+    h2:Clean()
+end

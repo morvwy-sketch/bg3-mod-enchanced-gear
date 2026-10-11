@@ -1,0 +1,67 @@
+{
+  "_comment": "Vanilla root templates (bg3.wiki item pages, akintos/bg3-data). Keys are referenced by Ids.lua (parent) and test gear.",
+  "ingot_bronze": {
+    "name": "LOOT_GEN_Metalbar_Bronze_A",
+    "uuid": "5b386575-5836-40cd-8548-e5c27fd105a1"
+  },
+  "ingot_silver": {
+    "name": "LOOT_GEN_Metalbar_Silver_A",
+    "uuid": "e0803337-e2b1-4528-8d4f-b5814e9a52ec"
+  },
+  "fluorite_purple": {
+    "name": "LOOT_Alchemy_Crystal_PurpleFluoriteShard",
+    "uuid": "fef1900a-402c-455f-8c63-87bdaedac6d7"
+  },
+  "diamond_black": {
+    "name": "LOOT_GEM_Diamond_A_Dark",
+    "uuid": "82d4f21d-11c8-47dd-a69f-dcfb3103ff76"
+  },
+  "hammer": {
+    "name": "TOOL_GEN_Hammer_Repair_A",
+    "uuid": "c2a14b56-9dca-4ad1-bcea-71204365f6a9"
+  },
+  "gold": {
+    "name": "OBJ_Goldpile",
+    "uuid": "1c3c9c74-34a1-4685-989e-410dc080be6f"
+  },
+  "longsword": {
+    "name": "WPN_HUM_Longsword_A_0",
+    "uuid": "1865323f-b428-4791-a0a9-578841e57463"
+  },
+  "quarterstaff": {
+    "name": "WPN_HUM_Quarterstaff_A_0",
+    "uuid": "96e2abaf-78ff-4dcb-a6a3-a5f0c348bd9f"
+  },
+  "dagger": {
+    "name": "WPN_HUM_Dagger_A_0",
+    "uuid": "569b0f3d-abcd-4b01-aaf0-979091288163"
+  },
+  "longbow": {
+    "name": "BASE_WEAPON_Longbows",
+    "uuid": "f5a95e54-b4ff-482d-b5f4-392917125c86"
+  },
+  "shield": {
+    "name": "WPN_HUM_Shield_C_0",
+    "uuid": "4491fcaf-03bf-4087-baf3-b638657080f6"
+  },
+  "chainmail": {
+    "name": "ARM_ChainMail",
+    "uuid": "b973e3cb-c18d-4514-ba01-ebcabbf26968"
+  },
+  "boots_leather": {
+    "name": "ARM_Boots_Leather",
+    "uuid": "969bab00-b269-46a5-a7e9-dd4887814719"
+  },
+  "gloves_leather": {
+    "name": "ARM_Gloves_Leather",
+    "uuid": "8e34fd76-8b6d-48a5-89e3-942289bec31e"
+  },
+  "helmet_metal": {
+    "name": "ARM_Helmet_Metal",
+    "uuid": "67a87879-533e-4f9b-8274-f5bd37748ace"
+  },
+  "ring_gold": {
+    "name": "LOOT_GEN_Ring_A_Gem_A_Gold",
+    "uuid": "173aad0e-0db4-4f2f-8f24-49e6898b8f90"
+  }
+}

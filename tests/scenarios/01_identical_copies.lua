@@ -1,0 +1,16 @@
+-- Two identical longswords: forging one leaves the other untouched (state, name, statuses).
+return function(T)
+    local h = T.New()
+    local a = h:Item(h.host, "longsword")
+    local b = h:Item(h.host, "longsword")
+    h:Rich()
+    h:Upgrade(a, 5)
+    T.eq(h:State(a).level, 5, "forged copy level")
+    T.eq(h:State(b), nil, "second copy has no state")
+    T.eq(h:Statuses(a), { "EG_ENCH_1" }, "forged copy carries the enchantment")
+    T.eq(h:Statuses(b), {}, "second copy has no statuses")
+    T.ok(h.w:E(a).handle ~= h.w:E(b).handle, "only the forged copy is renamed")
+    T.eq(h.w.loca.server[h.w:E(a).handle], "Longsword +5", "per-instance name")
+    T.eq(h.w.loca.server[h.w:E(b).handle], "Longsword", "other copy keeps the name")
+    h:Clean()
+end

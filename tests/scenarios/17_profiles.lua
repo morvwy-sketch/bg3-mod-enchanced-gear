@@ -1,0 +1,32 @@
+-- Profiles: focus detection, quarterstaff alternative, change only before the first investment.
+return function(T)
+    local L = T.L
+    T.eq(L.DetectProfiles({ kind = "weapon", caster = true }), { "focus", "weapon" })
+    T.eq(L.DetectProfiles({ kind = "weapon", staff = true }), { "weapon", "focus" })
+    T.eq(L.DetectProfiles({ kind = "weapon" }), { "weapon" })
+    T.eq(L.DetectProfiles({ kind = "armor", slot = "Melee Offhand Weapon" }), { "shield" })
+    T.eq(L.DetectProfiles({ kind = "armor", slot = "Ring2" }), { "ring" })
+    T.eq(L.DetectProfiles({ kind = "armor", slot = "Underwear" }), nil)
+    T.eq(L.DetectProfiles({ kind = nil }), nil)
+
+    local h = T.New()
+    h:Rich()
+    local caster, staff = h:Item(h.host, "caster"), h:Item(h.host, "staff")
+    local under = h:Item(h.host, "underwear")
+    local list = h:List()
+    T.eq(h.Entry(list, caster).state.profile, "focus")
+    T.eq(h.Entry(list, caster).profiles, { "focus", "weapon" })
+    T.eq(h.Entry(list, staff).profiles, { "weapon", "focus" })
+    T.eq(h.Entry(list, under), nil, "unsupported items are not listed")
+    T.eq(h.Entry(list, h.w.p.entities[under] and under), nil)
+
+    T.ok(h:Req("setProfile", { item = staff, profile = "focus" }).ok)
+    T.eq(h:State(staff).profile, "focus")
+    h:Upgrade(staff, 5)
+    h:Equip(h.host, "MAIN", staff)
+    T.eq(h:Statuses(h.host), { "EG_MS_FOCUS_5_MAIN" }, "focus effect from the weapon slot")
+    T.eq(h:Req("setProfile", { item = staff, profile = "weapon" }).reason, "profileLocked")
+    T.eq(h:Req("setProfile", { item = caster, profile = "body" }).reason, "unsupported")
+    T.eq(h:Req("upgrade", { item = under }).reason, "unsupported")
+    h:Clean()
+end

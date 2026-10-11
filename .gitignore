@@ -1,0 +1,7 @@
+# build outputs and caches
+dist/
+tools/.cache/
+tools/LsTool/bin/
+tools/LsTool/obj/
+__pycache__/
+*.pyc
